@@ -1,0 +1,641 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Legal, Policy & Agreements — Brace Trade OS</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,300;0,400;0,600;1,300&family=DM+Mono:wght@300;400&family=Syne:wght@400;500;600&display=swap" rel="stylesheet">
+  <style>
+    :root {
+      --teal:   #96BBBB;
+      --sage:   #618985;
+      --forest: #414535;
+      --sand:   #F2E3BC;
+      --amber:  #C19875;
+      --bg:     #1a1c14;
+      --surface: #212318;
+      --border: rgba(150,187,187,0.14);
+      --text-primary:   #F2E3BC;
+      --text-secondary: rgba(242,227,188,0.65);
+      --text-dim:       rgba(242,227,188,0.38);
+      --font-display: 'Cormorant Garamond', Georgia, serif;
+      --font-ui:      'Syne', sans-serif;
+      --font-mono:    'DM Mono', monospace;
+    }
+    * { box-sizing: border-box; margin: 0; padding: 0; }
+    body {
+      font-family: var(--font-ui);
+      background:  var(--bg);
+      color:       var(--text-primary);
+      line-height: 1.8;
+      font-size:   15px;
+    }
+    ::-webkit-scrollbar { width: 5px; }
+    ::-webkit-scrollbar-track { background: var(--bg); }
+    ::-webkit-scrollbar-thumb { background: var(--sage); border-radius: 99px; }
+
+    .policy-header {
+      background:    var(--surface);
+      border-bottom: 1px solid var(--border);
+      padding:       2.5rem 4rem;
+      position:      sticky;
+      top:           0;
+      z-index:       50;
+      display:       flex;
+      align-items:   center;
+      justify-content: space-between;
+      backdrop-filter: blur(8px);
+    }
+    .policy-brand {
+      display:     flex;
+      align-items: center;
+      gap:         0.6rem;
+      text-decoration: none;
+    }
+    .brand-hex {
+      font-size: 1.5rem;
+      color:     var(--teal);
+    }
+    .brand-name {
+      font-family:    var(--font-display);
+      font-size:      1.4rem;
+      font-weight:    300;
+      color:          var(--sand);
+      letter-spacing: 0.06em;
+    }
+    .back-btn {
+      font-size:   0.8rem;
+      color:       var(--teal);
+      text-decoration: none;
+      border:      1px solid var(--border);
+      padding:     0.4rem 0.9rem;
+      border-radius: 99px;
+      transition:  all 0.2s;
+    }
+    .back-btn:hover { background: rgba(150,187,187,0.12); }
+
+    .policy-hero {
+      text-align:    center;
+      padding:       5rem 4rem 3rem;
+      border-bottom: 1px solid var(--border);
+      background: radial-gradient(ellipse 60% 50% at 50% 100%, rgba(97,137,133,0.12) 0%, transparent 70%);
+    }
+    .policy-hero h1 {
+      font-family:    var(--font-display);
+      font-size:      clamp(2.5rem, 5vw, 4rem);
+      font-weight:    300;
+      color:          var(--sand);
+      letter-spacing: 0.04em;
+      line-height:    1.1;
+    }
+    .policy-hero p {
+      color:       var(--text-dim);
+      font-size:   0.85rem;
+      margin-top:  0.75rem;
+      font-family: var(--font-mono);
+    }
+    .effective-badge {
+      display:        inline-block;
+      background:     rgba(97,137,133,0.2);
+      border:         1px solid var(--border);
+      color:          var(--teal);
+      font-size:      0.72rem;
+      padding:        0.3rem 0.9rem;
+      border-radius:  99px;
+      margin-bottom:  1.5rem;
+      font-family:    var(--font-mono);
+      letter-spacing: 0.08em;
+    }
+
+    .toc-wrap {
+      max-width:  900px;
+      margin:     2.5rem auto;
+      padding:    0 4rem;
+    }
+    .toc {
+      background:    var(--surface);
+      border:        1px solid var(--border);
+      border-radius: 12px;
+      padding:       1.5rem 2rem;
+    }
+    .toc-title {
+      font-size:      0.72rem;
+      text-transform: uppercase;
+      letter-spacing: 0.14em;
+      color:          var(--text-dim);
+      margin-bottom:  1rem;
+    }
+    .toc a {
+      display:     block;
+      color:       var(--text-secondary);
+      text-decoration: none;
+      font-size:   0.82rem;
+      padding:     0.2rem 0;
+      transition:  color 0.2s;
+    }
+    .toc a:hover { color: var(--teal); }
+
+    .policy-body {
+      max-width: 900px;
+      margin:    0 auto;
+      padding:   0 4rem 5rem;
+    }
+
+    .policy-section {
+      margin-bottom: 3rem;
+      scroll-margin-top: 80px;
+    }
+
+    .section-num {
+      font-family:    var(--font-mono);
+      font-size:      0.7rem;
+      color:          var(--sage);
+      letter-spacing: 0.12em;
+      text-transform: uppercase;
+      display:        block;
+      margin-bottom:  0.4rem;
+    }
+
+    .policy-section h2 {
+      font-family:    var(--font-display);
+      font-size:      1.9rem;
+      font-weight:    400;
+      color:          var(--sand);
+      margin-bottom:  1rem;
+      border-bottom:  1px solid var(--border);
+      padding-bottom: 0.5rem;
+    }
+
+    .policy-section h3 {
+      font-family: var(--font-ui);
+      font-size:   1rem;
+      font-weight: 600;
+      color:       var(--teal);
+      margin:      1.5rem 0 0.5rem;
+    }
+
+    .policy-section p {
+      color:       var(--text-secondary);
+      margin-bottom: 0.75rem;
+      font-size:   0.9rem;
+      line-height: 1.85;
+    }
+
+    .policy-section ul, .policy-section ol {
+      padding-left:  1.5rem;
+      margin-bottom: 0.75rem;
+      color:         var(--text-secondary);
+      font-size:     0.9rem;
+    }
+    .policy-section li { margin-bottom: 0.35rem; line-height: 1.7; }
+
+    .warning-box {
+      background:    rgba(193,152,117,0.12);
+      border:        1px solid rgba(193,152,117,0.35);
+      border-left:   3px solid var(--amber);
+      border-radius: 6px;
+      padding:       1rem 1.25rem;
+      margin:        1.25rem 0;
+      font-size:     0.85rem;
+      color:         var(--amber);
+      line-height:   1.7;
+    }
+
+    .highlight-box {
+      background:    rgba(97,137,133,0.1);
+      border:        1px solid rgba(97,137,133,0.3);
+      border-left:   3px solid var(--teal);
+      border-radius: 6px;
+      padding:       1rem 1.25rem;
+      margin:        1.25rem 0;
+      font-size:     0.85rem;
+      color:         var(--text-secondary);
+      line-height:   1.7;
+    }
+
+    .disclaimer-banner {
+      background:    rgba(193,100,80,0.12);
+      border:        2px solid rgba(193,100,80,0.35);
+      border-radius: 10px;
+      padding:       1.5rem;
+      margin:        2rem 0;
+      font-size:     0.88rem;
+      color:         #dda090;
+      line-height:   1.8;
+    }
+    .disclaimer-banner strong { color: #e8a090; font-size: 1rem; }
+
+    .data-table {
+      width:         100%;
+      border-collapse: collapse;
+      margin:        1rem 0;
+      font-size:     0.82rem;
+    }
+    .data-table th {
+      text-align:     left;
+      padding:        0.5rem 0.75rem;
+      background:     var(--surface);
+      color:          var(--teal);
+      font-size:      0.72rem;
+      text-transform: uppercase;
+      letter-spacing: 0.1em;
+      border-bottom:  1px solid var(--border);
+    }
+    .data-table td {
+      padding:      0.5rem 0.75rem;
+      color:        var(--text-secondary);
+      border-bottom: 1px solid rgba(150,187,187,0.07);
+    }
+    .data-table tr:last-child td { border-bottom: none; }
+
+    .signature-block {
+      background:    var(--surface);
+      border:        1px solid var(--border);
+      border-radius: 10px;
+      padding:       1.5rem 2rem;
+      margin-top:    3rem;
+      text-align:    center;
+    }
+    .sig-title {
+      font-family: var(--font-display);
+      font-size:   1.5rem;
+      font-weight: 300;
+      color:       var(--sand);
+      margin-bottom: 0.5rem;
+    }
+    .sig-hex {
+      font-size:  2rem;
+      color:      var(--teal);
+      display:    block;
+      margin-bottom: 0.5rem;
+    }
+    .sig-text { font-size: 0.8rem; color: var(--text-dim); }
+
+    @media (max-width: 640px) {
+      .policy-header { padding: 1.5rem; }
+      .policy-hero   { padding: 3rem 1.5rem 2rem; }
+      .toc-wrap, .policy-body { padding: 0 1.5rem 3rem; }
+    }
+  </style>
+</head>
+<body>
+
+  <header class="policy-header">
+    <a href="/" class="policy-brand">
+      <span class="brand-hex">⬡</span>
+      <span class="brand-name">Brace</span>
+    </a>
+    <a href="/" class="back-btn">← Back to App</a>
+  </header>
+
+  <div class="policy-hero">
+    <span class="effective-badge">Effective: 2024 · Version 1.0</span>
+    <h1>Legal, Policy<br>& Agreements</h1>
+    <p>Terms of Service · Privacy Policy · Disclaimer · Arbitration Agreement · Data Policy</p>
+  </div>
+
+  <div class="toc-wrap">
+    <div class="toc">
+      <div class="toc-title">Table of Contents</div>
+      <a href="#section-1">1. Platform Nature & Role — What Brace Is and Is Not</a>
+      <a href="#section-2">2. Terms of Service</a>
+      <a href="#section-3">3. Critical Disclaimers & Limitation of Liability</a>
+      <a href="#section-4">4. AI & ML Model Usage Disclaimer</a>
+      <a href="#section-5">5. Tax & Tariff Estimation Disclaimer</a>
+      <a href="#section-6">6. Trust Score & Grade Verification Disclaimer</a>
+      <a href="#section-7">7. Privacy Policy & Data Processing</a>
+      <a href="#section-8">8. Escrow & Payment Disclaimer</a>
+      <a href="#section-9">9. Dispute Resolution & Arbitration</a>
+      <a href="#section-10">10. Intellectual Property</a>
+      <a href="#section-11">11. Prohibited Uses</a>
+      <a href="#section-12">12. Governing Law & Jurisdiction</a>
+      <a href="#section-13">13. Contact & Compliance</a>
+    </div>
+  </div>
+
+  <div class="policy-body">
+
+    <!-- ─── SECTION 1 ─── -->
+    <div class="policy-section" id="section-1">
+      <span class="section-num">Section 01</span>
+      <h2>Platform Nature & Role</h2>
+
+      <div class="disclaimer-banner">
+        <strong>⚠ READ THIS FIRST — Critical Legal Clarification</strong><br>
+        Brace Trade OS is a <strong>digital infrastructure and coordination layer</strong>. It is not a marketplace, financial institution, certified inspector, trade advisor, legal counsel, customs broker, or government-authorized body. By using Brace, you acknowledge and agree that Brace acts solely as a neutral technological platform facilitating communication, documentation, and data exchange between independent merchant parties.
+      </div>
+
+      <p>Brace Trade OS ("Brace," "the Platform," "we," "us") operates as a Software-as-a-Service (SaaS) platform designed to assist merchants, exporters, and importers in organizing, documenting, and tracking international trade activities.</p>
+
+      <h3>What Brace IS</h3>
+      <ul>
+        <li>A digital coordination layer for trade documentation and deal management</li>
+        <li>A trust score computation engine based on merchant-provided and system-derived data</li>
+        <li>An estimator of trade-related costs, taxes, and duties for planning purposes</li>
+        <li>A document generation tool for reference-grade commercial documents</li>
+        <li>A technology infrastructure facilitating communication between independent merchants</li>
+      </ul>
+
+      <h3>What Brace IS NOT</h3>
+      <ul>
+        <li>A licensed financial institution, payment processor, or escrow service provider</li>
+        <li>A certified trade inspector, grading authority, or quality certification body</li>
+        <li>A licensed customs broker, freight forwarder, or trade compliance officer</li>
+        <li>A legal services provider or source of legally binding advice</li>
+        <li>A government-authorized tax authority or regulatory body</li>
+        <li>A guarantor of any transaction, payment, delivery, or product quality</li>
+        <li>A counterparty to any trade transaction conducted through the platform</li>
+      </ul>
+
+      <div class="highlight-box">
+        All commercial transactions, agreements, payments, and legal obligations entered into by users of Brace are solely between the buyer and seller as independent counterparties. Brace bears no liability for the performance, non-performance, quality, legality, or outcome of any transaction.
+      </div>
+    </div>
+
+    <!-- ─── SECTION 2 ─── -->
+    <div class="policy-section" id="section-2">
+      <span class="section-num">Section 02</span>
+      <h2>Terms of Service</h2>
+
+      <h3>2.1 Acceptance</h3>
+      <p>By registering an account, accessing, or using the Brace platform in any manner, you ("Merchant," "User," "you") represent that you have read, understood, and agree to be bound by these Terms of Service and all policies incorporated herein. If you do not agree, you must not access or use the platform.</p>
+
+      <h3>2.2 Eligibility</h3>
+      <p>You must be at least 18 years of age and legally authorized to enter into binding contracts in your jurisdiction. You represent that you are acting on behalf of a legitimate business entity where applicable, and that your use of Brace complies with all applicable laws and regulations in your jurisdiction.</p>
+
+      <h3>2.3 Account Responsibilities</h3>
+      <ul>
+        <li>You are solely responsible for maintaining the confidentiality of your login credentials.</li>
+        <li>You are responsible for all activity conducted through your account.</li>
+        <li>You must provide accurate, current, and complete information during registration and use.</li>
+        <li>You must promptly notify us of any unauthorized access to your account.</li>
+        <li>One account per natural person or legal entity; accounts are non-transferable.</li>
+      </ul>
+
+      <h3>2.4 Acceptable Use</h3>
+      <p>You agree to use Brace only for lawful purposes and in accordance with these Terms. You shall not use the platform to facilitate trade in illegal goods, circumvent trade sanctions, launder money, or engage in any fraudulent activity.</p>
+
+      <h3>2.5 Modification of Terms</h3>
+      <p>Brace reserves the right to modify these Terms at any time. Continued use of the platform following notice of modifications constitutes acceptance of the revised terms. Material changes will be communicated via email or prominent in-app notice.</p>
+
+      <h3>2.6 Termination</h3>
+      <p>Brace may suspend or terminate your account at its sole discretion, with or without cause, and with or without notice. You may terminate your account at any time by contacting support. Termination does not extinguish any obligations or liabilities incurred prior to termination.</p>
+    </div>
+
+    <!-- ─── SECTION 3 ─── -->
+    <div class="policy-section" id="section-3">
+      <span class="section-num">Section 03</span>
+      <h2>Critical Disclaimers & Limitation of Liability</h2>
+
+      <div class="disclaimer-banner">
+        <strong>⚠ IMPORTANT — Please Read Carefully</strong><br>
+        To the maximum extent permitted by applicable law, Brace Trade OS, its founders, directors, officers, employees, contractors, affiliates, licensors, and service providers expressly disclaim all liability arising from or related to the use of this platform.
+      </div>
+
+      <h3>3.1 "As Is" Service</h3>
+      <p>THE PLATFORM IS PROVIDED ON AN "AS IS" AND "AS AVAILABLE" BASIS WITHOUT WARRANTIES OF ANY KIND, EITHER EXPRESS OR IMPLIED, INCLUDING WITHOUT LIMITATION WARRANTIES OF MERCHANTABILITY, FITNESS FOR A PARTICULAR PURPOSE, NON-INFRINGEMENT, OR UNINTERRUPTED OR ERROR-FREE SERVICE.</p>
+
+      <h3>3.2 No Guarantee of Accuracy</h3>
+      <p>Brace does not warrant the accuracy, completeness, or reliability of any data, information, calculation, document, recommendation, score, or output generated by the platform. All platform outputs are for reference and planning purposes only and must be independently verified before being relied upon for any business, legal, financial, or regulatory decision.</p>
+
+      <h3>3.3 Limitation of Liability</h3>
+      <p>IN NO EVENT SHALL BRACE, ITS AFFILIATES, OR THEIR RESPECTIVE DIRECTORS, EMPLOYEES, OR AGENTS BE LIABLE FOR ANY INDIRECT, INCIDENTAL, SPECIAL, CONSEQUENTIAL, EXEMPLARY, OR PUNITIVE DAMAGES, INCLUDING BUT NOT LIMITED TO LOSS OF PROFITS, LOSS OF DATA, LOSS OF BUSINESS OPPORTUNITY, OR LOSS OF GOODWILL, EVEN IF BRACE HAS BEEN ADVISED OF THE POSSIBILITY OF SUCH DAMAGES.</p>
+      <p>TO THE FULLEST EXTENT PERMITTED BY APPLICABLE LAW, BRACE'S TOTAL AGGREGATE LIABILITY TO YOU FOR ANY CLAIM ARISING OUT OF OR RELATING TO THE PLATFORM SHALL NOT EXCEED THE GREATER OF (A) THE AMOUNT YOU PAID TO BRACE IN THE THREE (3) MONTHS PRECEDING THE CLAIM, OR (B) ONE HUNDRED US DOLLARS (USD $100).</p>
+
+      <h3>3.4 Transaction Risk</h3>
+      <p>All trade transactions conducted through or facilitated by Brace are entirely at your own risk. Brace does not guarantee that counterparties will perform their contractual obligations, that goods will be delivered, or that payments will be made. Merchants are solely responsible for conducting their own due diligence on all counterparties.</p>
+
+      <h3>3.5 Force Majeure</h3>
+      <p>Brace shall not be liable for any failure or delay in performance resulting from causes beyond its reasonable control, including but not limited to acts of God, war, terrorism, civil unrest, government actions, regulatory changes, cyber attacks, pandemic, natural disasters, or third-party service failures.</p>
+    </div>
+
+    <!-- ─── SECTION 4 ─── -->
+    <div class="policy-section" id="section-4">
+      <span class="section-num">Section 04</span>
+      <h2>AI & Machine Learning Disclaimer</h2>
+
+      <p>Brace integrates artificial intelligence and machine learning models to provide market intelligence, sentiment analysis, and trade recommendations. By using these features, you acknowledge and agree to the following:</p>
+
+      <h3>4.1 AI Model Transparency</h3>
+      <table class="data-table">
+        <thead>
+          <tr><th>Feature</th><th>Model</th><th>Provider</th><th>Limitation</th></tr>
+        </thead>
+        <tbody>
+          <tr><td>Market Sentiment</td><td>distilbert-base-uncased-finetuned-sst-2-english</td><td>Hugging Face</td><td>General sentiment; not trade-specific</td></tr>
+          <tr><td>Document Generation</td><td>mistralai/Mistral-7B-Instruct-v0.2</td><td>Hugging Face</td><td>Reference only; not legally reviewed</td></tr>
+          <tr><td>Financial Risk</td><td>ProsusAI/finbert</td><td>Hugging Face</td><td>Indicative; not investment advice</td></tr>
+          <tr><td>Grade Scoring</td><td>Custom Rule Engine</td><td>Brace</td><td>Formula-based; not physical inspection</td></tr>
+        </tbody>
+      </table>
+
+      <div class="warning-box">
+        ⚠ AI-generated outputs, market recommendations, and document suggestions are for informational purposes only. They do not constitute legal, financial, trade, or investment advice. AI models may produce inaccurate, biased, or incomplete outputs. Never rely solely on AI-generated information for trade decisions without independent professional verification.
+      </div>
+
+      <h3>4.2 AI Hallucination Risk</h3>
+      <p>Large language models and AI inference APIs can produce plausible-sounding but factually incorrect outputs ("hallucinations"). Brace cannot and does not guarantee the factual accuracy of AI-generated content. Users assume full responsibility for verifying any AI-generated information before acting on it.</p>
+
+      <h3>4.3 Free Tier API Limitations</h3>
+      <p>Brace uses free-tier Hugging Face inference endpoints, which may be subject to rate limits, latency, model availability, and service interruptions. Brace is not responsible for AI feature unavailability or degraded performance due to third-party API constraints.</p>
+    </div>
+
+    <!-- ─── SECTION 5 ─── -->
+    <div class="policy-section" id="section-5">
+      <span class="section-num">Section 05</span>
+      <h2>Tax & Tariff Estimation Disclaimer</h2>
+
+      <div class="warning-box">
+        ⚠ CRITICAL: Tax and tariff figures calculated by Brace are ESTIMATES ONLY, based on simplified tariff matrices and publicly available data. These figures are NOT binding, NOT official, and may be MATERIALLY INACCURATE. Actual customs duties, taxes, and levies are determined solely by the customs authorities of the importing country.
+      </div>
+
+      <p>The tax calculator on Brace provides indicative estimates for planning purposes only. These estimates:</p>
+      <ul>
+        <li>Do not constitute official tax assessments or binding rulings</li>
+        <li>Do not account for trade agreements, preferential tariff schemes, anti-dumping duties, or special economic zones</li>
+        <li>Are not a substitute for advice from a licensed customs broker, freight forwarder, or tax professional</li>
+        <li>May not reflect recent changes in tariff schedules, which can change without notice</li>
+        <li>Do not account for country-specific import licensing requirements or regulatory approvals</li>
+      </ul>
+
+      <p>You must consult a licensed customs broker or trade compliance specialist before making any customs declarations or financial commitments based on tax estimates from Brace. Brace is not liable for any taxes, duties, penalties, or fines arising from reliance on platform estimates.</p>
+    </div>
+
+    <!-- ─── SECTION 6 ─── -->
+    <div class="policy-section" id="section-6">
+      <span class="section-num">Section 06</span>
+      <h2>Trust Score & Grade Verification Disclaimer</h2>
+
+      <h3>6.1 Trust Score Limitations</h3>
+      <p>The Seller Credit Score generated by Brace is an algorithmic assessment based on platform-recorded data including transaction history, self-reported metrics, and feedback. It does NOT constitute:</p>
+      <ul>
+        <li>A credit rating from a licensed credit rating agency</li>
+        <li>A guarantee of future performance or reliability</li>
+        <li>A background check, financial due diligence, or legal verification of any merchant</li>
+        <li>An endorsement or certification by any regulatory authority</li>
+      </ul>
+
+      <div class="warning-box">
+        ⚠ Trust scores can be gamed, manipulated, or become outdated. They are supplementary indicators only. You must conduct independent due diligence on all counterparties before entering any trade transaction.
+      </div>
+
+      <h3>6.2 Grade Verification Limitations</h3>
+      <p>Grades declared on Brace are self-reported by sellers. Conditional verification is triggered algorithmically but does not substitute for physical inspection by accredited inspection bodies such as SGS, Bureau Veritas, or Intertek. The Normalized Global Grade Score is a proprietary conversion system and is not recognized by any official grading authority.</p>
+
+      <h3>6.3 Buyer Protection</h3>
+      <p>Brace strongly recommends that buyers for high-value transactions engage accredited inspection services and independent quality verification regardless of a seller's trust score or declared grade.</p>
+    </div>
+
+    <!-- ─── SECTION 7 ─── -->
+    <div class="policy-section" id="section-7">
+      <span class="section-num">Section 07</span>
+      <h2>Privacy Policy & Data Processing</h2>
+
+      <h3>7.1 Data We Collect</h3>
+      <table class="data-table">
+        <thead><tr><th>Data Type</th><th>Purpose</th><th>Retention</th></tr></thead>
+        <tbody>
+          <tr><td>Name, Email, Company</td><td>Account management</td><td>Account lifetime + 2 years</td></tr>
+          <tr><td>Trade deal details</td><td>Service provision</td><td>7 years (audit compliance)</td></tr>
+          <tr><td>Credit score data</td><td>Trust computation</td><td>Account lifetime</td></tr>
+          <tr><td>Audit logs</td><td>Security & compliance</td><td>7 years</td></tr>
+          <tr><td>Session data</td><td>Authentication</td><td>24 hours</td></tr>
+          <tr><td>IP address</td><td>Security, fraud prevention</td><td>90 days</td></tr>
+        </tbody>
+      </table>
+
+      <h3>7.2 How We Use Your Data</h3>
+      <ul>
+        <li>To provide, maintain, and improve the Brace platform and services</li>
+        <li>To compute trust scores and risk assessments</li>
+        <li>To generate trade documents and facilitate communications</li>
+        <li>To detect, prevent, and investigate fraud and unauthorized activity</li>
+        <li>To comply with legal obligations and regulatory requirements</li>
+        <li>To send service-related communications (not marketing without consent)</li>
+      </ul>
+
+      <h3>7.3 Data Sharing</h3>
+      <p>We do not sell your personal data. We may share data with:</p>
+      <ul>
+        <li>Third-party API providers (exchange rate APIs, Hugging Face) in anonymized or aggregated form where necessary for service provision</li>
+        <li>Legal authorities when required by applicable law, court order, or to protect legal rights</li>
+        <li>Successors in interest in the event of a business merger or acquisition</li>
+      </ul>
+
+      <h3>7.4 Data Security</h3>
+      <p>We implement industry-standard security measures including bcrypt password hashing, HTTPOnly session cookies, input sanitization, rate limiting, and audit logging. However, no system is perfectly secure and we cannot guarantee absolute security of your data.</p>
+
+      <h3>7.5 Your Rights</h3>
+      <p>Depending on your jurisdiction, you may have rights to access, correct, delete, or port your personal data. To exercise these rights, contact us at the address in Section 13.</p>
+
+      <h3>7.6 Cookies</h3>
+      <p>Brace uses session cookies strictly necessary for authentication and platform functionality. We do not use tracking cookies, advertising cookies, or third-party analytics cookies without your consent.</p>
+    </div>
+
+    <!-- ─── SECTION 8 ─── -->
+    <div class="policy-section" id="section-8">
+      <span class="section-num">Section 08</span>
+      <h2>Escrow & Payment Disclaimer</h2>
+
+      <div class="warning-box">
+        ⚠ The escrow and payment features depicted in Brace's demo and documentation are SIMULATED for demonstration purposes in the current version. They do not involve actual financial transactions, actual fund holding, or regulated payment services. No actual money is held, transferred, or protected by Brace in the current version.
+      </div>
+
+      <p>Any future implementation of real payment or escrow services will be conducted in strict compliance with applicable financial regulations and will be clearly disclosed to users. Brace will only process real payments through licensed payment service providers and will comply with all applicable Anti-Money Laundering (AML), Know Your Customer (KYC), and financial regulatory requirements.</p>
+
+      <p>Brace is not a licensed payment institution, electronic money institution, or escrow service provider under any applicable financial services regulation.</p>
+    </div>
+
+    <!-- ─── SECTION 9 ─── -->
+    <div class="policy-section" id="section-9">
+      <span class="section-num">Section 09</span>
+      <h2>Dispute Resolution & Arbitration</h2>
+
+      <h3>9.1 Platform Dispute Mediation</h3>
+      <p>Brace offers a dispute-raising mechanism as a convenience feature for merchants to flag trade disputes. Brace's role in any dispute is strictly that of a neutral facilitator. Brace does NOT act as arbitrator, judge, or binding decision-maker in any commercial dispute.</p>
+
+      <h3>9.2 Commercial Dispute Resolution</h3>
+      <p>Any commercial disputes between buyers and sellers using the Brace platform shall be resolved through negotiation between the parties and, if unresolved, through independent arbitration in accordance with the arbitration rules of a mutually agreed institution (e.g., ICC International Court of Arbitration, UNCITRAL).</p>
+
+      <h3>9.3 Platform-User Disputes</h3>
+      <p>Any dispute, controversy, or claim arising out of or relating to these Terms or your use of Brace shall be resolved through binding arbitration administered by a neutral arbitrator, rather than in court, except for claims involving intellectual property infringement or injunctive relief.</p>
+
+      <h3>9.4 Class Action Waiver</h3>
+      <p>To the maximum extent permitted by applicable law, you waive any right to bring claims as a plaintiff or class member in any class action, consolidated action, or representative proceeding.</p>
+
+      <h3>9.5 Human-in-the-Loop Requirement</h3>
+      <p>Brace maintains an internal review process for flagged disputes and significant platform decisions. No automated system alone determines outcomes affecting users' accounts or standings without human review.</p>
+    </div>
+
+    <!-- ─── SECTION 10 ─── -->
+    <div class="policy-section" id="section-10">
+      <span class="section-num">Section 10</span>
+      <h2>Intellectual Property</h2>
+
+      <p>The Brace platform, including its design, algorithms, trust scoring methodology, Normalized Global Grade Score system, trade flow architecture, source code, documentation, trademarks, and trade name "Brace Trade OS" are the intellectual property of Brace and its founders.</p>
+
+      <p>You are granted a limited, non-exclusive, non-transferable, revocable license to use the platform for your legitimate trade purposes in accordance with these Terms. You may not copy, modify, distribute, reverse-engineer, or create derivative works based on Brace's proprietary systems without written permission.</p>
+
+      <p>Documents generated by Brace using your data belong to you. However, Brace retains the right to use anonymized, aggregated data derived from platform usage to improve its services.</p>
+    </div>
+
+    <!-- ─── SECTION 11 ─── -->
+    <div class="policy-section" id="section-11">
+      <span class="section-num">Section 11</span>
+      <h2>Prohibited Uses</h2>
+      <p>You may not use Brace to:</p>
+      <ul>
+        <li>Trade in goods that are illegal, prohibited by international sanctions, CITES-protected species, or dual-use goods without appropriate licenses</li>
+        <li>Circumvent or evade customs controls, trade restrictions, or sanctions regimes (including but not limited to OFAC, EU, UN sanctions lists)</li>
+        <li>Launder money, finance terrorism, or engage in other financial crimes</li>
+        <li>Provide false or misleading information about product grades, quantities, origins, or values</li>
+        <li>Impersonate any person, entity, or business</li>
+        <li>Engage in market manipulation, price fixing, or anti-competitive conduct</li>
+        <li>Attempt to exploit vulnerabilities in the platform or access accounts without authorization</li>
+        <li>Use the platform for any purpose that violates applicable laws or regulations</li>
+      </ul>
+      <p>Violation of these prohibitions may result in immediate account termination and referral to relevant authorities.</p>
+    </div>
+
+    <!-- ─── SECTION 12 ─── -->
+    <div class="policy-section" id="section-12">
+      <span class="section-num">Section 12</span>
+      <h2>Governing Law & Jurisdiction</h2>
+
+      <p>These Terms shall be governed by and construed in accordance with the laws of the jurisdiction in which Brace is registered as a legal entity. Users outside that jurisdiction agree to comply with all applicable local laws.</p>
+
+      <p>For international trade facilitated through Brace, the Incoterms rules published by the International Chamber of Commerce, the United Nations Convention on Contracts for the International Sale of Goods (CISG), and other applicable international trade conventions shall be referenced where appropriate, but Brace makes no warranty that generated documents comply with these standards.</p>
+
+      <p>Nothing in these Terms shall be construed to create a partnership, joint venture, employment, or agency relationship between Brace and any user.</p>
+    </div>
+
+    <!-- ─── SECTION 13 ─── -->
+    <div class="policy-section" id="section-13">
+      <span class="section-num">Section 13</span>
+      <h2>Contact & Compliance</h2>
+
+      <p>For questions, concerns, data requests, or compliance matters relating to these policies, please contact the Brace team through the platform's support channels or via the registered business address.</p>
+
+      <p>For data protection inquiries (GDPR, DPDPA, or other applicable regimes), please clearly mark communications as "Data Protection Request."</p>
+
+      <div class="highlight-box">
+        Brace Trade OS is committed to responsible trade facilitation. We support global trade compliance, anti-corruption principles as outlined by the OECD Anti-Bribery Convention, and responsible business conduct as outlined by the UN Global Compact.
+      </div>
+
+      <p style="color:var(--text-dim);font-size:0.8rem;margin-top:1.5rem">
+        This document was last updated in 2024 and supersedes all prior versions. Brace reserves the right to update these terms at any time. The most current version will always be accessible at <code style="font-family:var(--font-mono);color:var(--teal)">/policy</code> on the Brace platform.
+      </p>
+    </div>
+
+    <div class="signature-block">
+      <span class="sig-hex">⬡</span>
+      <div class="sig-title">Brace Trade OS</div>
+      <p class="sig-text">Trust. Verify. Trade.<br>A new trust protocol for global commerce.</p>
+    </div>
+
+  </div>
+
+</body>
+</html>

@@ -1,0 +1,504 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Brace — Global Trade OS</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,300;0,400;0,600;1,300;1,400&family=DM+Mono:wght@300;400;500&family=Syne:wght@400;500;600;700;800&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="style.css">
+</head>
+<body>
+  <!-- ════════════════════════════════════════
+       AUTH GATE
+  ════════════════════════════════════════ -->
+  <div id="auth-gate" class="auth-gate hidden">
+    <div class="auth-backdrop"></div>
+    <div class="auth-panel">
+      <div class="auth-brand">
+        <div class="auth-logo">⬡</div>
+        <h1 class="auth-title">Brace</h1>
+        <p class="auth-subtitle">Global Trade Operating System</p>
+      </div>
+
+      <!-- Login Form -->
+      <div id="login-form" class="auth-form active">
+        <h2>Welcome back</h2>
+        <p class="form-hint">Sign in to your merchant account</p>
+        <div class="field-group">
+          <label>Email</label>
+          <input type="email" id="login-email" placeholder="merchant@company.com" />
+        </div>
+        <div class="field-group">
+          <label>Password</label>
+          <input type="password" id="login-password" placeholder="••••••••" />
+        </div>
+        <div id="login-error" class="form-error hidden"></div>
+        <button class="btn-primary" onclick="handleLogin()">Sign In</button>
+        <p class="form-switch">No account? <a href="#" onclick="switchAuth('register')">Create one</a></p>
+        <p class="form-legal">By signing in you agree to the <a href="/policy" target="_blank">Terms of Service & Privacy Policy</a></p>
+      </div>
+
+      <!-- Register Form -->
+      <div id="register-form" class="auth-form">
+        <h2>Join Brace</h2>
+        <p class="form-hint">Create your merchant account</p>
+        <div class="field-row">
+          <div class="field-group">
+            <label>Full Name</label>
+            <input type="text" id="reg-name" placeholder="Arjun Mehta" />
+          </div>
+          <div class="field-group">
+            <label>Company</label>
+            <input type="text" id="reg-company" placeholder="Mehta Exports Ltd" />
+          </div>
+        </div>
+        <div class="field-group">
+          <label>Email</label>
+          <input type="email" id="reg-email" placeholder="arjun@mehtaexports.com" />
+        </div>
+        <div class="field-group">
+          <label>Country</label>
+          <select id="reg-country">
+            <option value="">Select your country</option>
+            <option value="IN">India</option>
+            <option value="DE">Germany</option>
+            <option value="US">United States</option>
+            <option value="GB">United Kingdom</option>
+            <option value="AE">UAE</option>
+            <option value="CN">China</option>
+            <option value="JP">Japan</option>
+            <option value="SG">Singapore</option>
+          </select>
+        </div>
+        <div class="field-group">
+          <label>Password</label>
+          <input type="password" id="reg-password" placeholder="At least 8 characters" />
+        </div>
+        <div id="reg-error" class="form-error hidden"></div>
+        <div class="consent-check">
+          <input type="checkbox" id="reg-agree" />
+          <label for="reg-agree">I agree to the <a href="/policy" target="_blank">Terms of Service, Privacy Policy, and Legal Disclaimer</a></label>
+        </div>
+        <button class="btn-primary" onclick="handleRegister()">Create Account</button>
+        <p class="form-switch">Already a member? <a href="#" onclick="switchAuth('login')">Sign in</a></p>
+      </div>
+    </div>
+  </div>
+
+  <!-- ════════════════════════════════════════
+       MAIN APP
+  ════════════════════════════════════════ -->
+  <div id="main-app" class="main-app hidden">
+
+    <!-- SIDEBAR -->
+    <aside class="sidebar">
+      <div class="sidebar-brand">
+        <span class="brand-hex">⬡</span>
+        <span class="brand-name">Brace</span>
+      </div>
+      <nav class="sidebar-nav">
+        <a href="#" class="nav-item active" data-page="dashboard" onclick="navigate('dashboard')">
+          <span class="nav-icon">◈</span> Dashboard
+        </a>
+        <a href="#" class="nav-item" data-page="new-deal" onclick="navigate('new-deal')">
+          <span class="nav-icon">◉</span> New Deal
+        </a>
+        <a href="#" class="nav-item" data-page="my-deals" onclick="navigate('my-deals')">
+          <span class="nav-icon">◎</span> My Deals
+        </a>
+        <a href="#" class="nav-item" data-page="trust-score" onclick="navigate('trust-score')">
+          <span class="nav-icon">◆</span> Trust Score
+        </a>
+        <a href="#" class="nav-item" data-page="tax-calc" onclick="navigate('tax-calc')">
+          <span class="nav-icon">◇</span> Tax Calculator
+        </a>
+        <a href="#" class="nav-item" data-page="fx-rates" onclick="navigate('fx-rates')">
+          <span class="nav-icon">◯</span> FX Rates
+        </a>
+        <a href="#" class="nav-item" data-page="markets" onclick="navigate('markets')">
+          <span class="nav-icon">◕</span> AI Markets
+        </a>
+        <a href="#" class="nav-item" data-page="disputes" onclick="navigate('disputes')">
+          <span class="nav-icon">◐</span> Disputes
+        </a>
+        <a href="#" class="nav-item" data-page="audit" onclick="navigate('audit')">
+          <span class="nav-icon">▣</span> Audit Log
+        </a>
+      </nav>
+      <div class="sidebar-footer">
+        <a href="/policy" target="_blank" class="footer-link">Legal & Policy</a>
+        <button class="btn-logout" onclick="handleLogout()">Sign Out</button>
+        <div class="merchant-badge" id="sidebar-merchant"></div>
+      </div>
+    </aside>
+
+    <!-- MAIN CONTENT -->
+    <main class="main-content">
+      <div class="topbar">
+        <div class="topbar-title" id="topbar-title">Dashboard</div>
+        <div class="topbar-right">
+          <div class="merchant-chip" id="topbar-merchant"></div>
+        </div>
+      </div>
+
+      <!-- ── DASHBOARD ── -->
+      <section id="page-dashboard" class="page active">
+        <div class="page-header">
+          <h2 class="page-title">Overview</h2>
+          <p class="page-desc">Your trade operations at a glance</p>
+        </div>
+        <div class="stat-grid" id="stat-grid">
+          <div class="stat-card" id="stat-volume">
+            <div class="stat-label">Trade Volume</div>
+            <div class="stat-value">—</div>
+            <div class="stat-sub">USD equivalent</div>
+          </div>
+          <div class="stat-card highlight" id="stat-credit">
+            <div class="stat-label">Trust Score</div>
+            <div class="stat-value">—</div>
+            <div class="stat-sub">Verification tier</div>
+          </div>
+          <div class="stat-card" id="stat-deals">
+            <div class="stat-label">Active Deals</div>
+            <div class="stat-value">—</div>
+            <div class="stat-sub">In progress</div>
+          </div>
+          <div class="stat-card" id="stat-completed">
+            <div class="stat-label">Completed</div>
+            <div class="stat-value">—</div>
+            <div class="stat-sub">All time</div>
+          </div>
+        </div>
+        <div class="section-divider">
+          <span>Recent Deals</span>
+        </div>
+        <div id="recent-deals-list" class="deal-list"></div>
+      </section>
+
+      <!-- ── NEW DEAL ── -->
+      <section id="page-new-deal" class="page">
+        <div class="page-header">
+          <h2 class="page-title">Create Trade Deal</h2>
+          <p class="page-desc">List your product on the Brace network</p>
+        </div>
+        <div class="form-card">
+          <div class="form-section-label">Product Information</div>
+          <div class="field-row">
+            <div class="field-group">
+              <label>Product Name</label>
+              <input type="text" id="deal-product" placeholder="e.g. Basmati Rice, Grade A" />
+            </div>
+            <div class="field-group">
+              <label>HS Code <span class="optional">(optional)</span></label>
+              <input type="text" id="deal-hs" placeholder="e.g. 1006.30" />
+            </div>
+          </div>
+          <div class="form-section-label">Trade Route</div>
+          <div class="field-row">
+            <div class="field-group">
+              <label>Origin Country</label>
+              <select id="deal-origin">
+                <option value="">Select origin</option>
+                <option value="IN">India</option>
+                <option value="DE">Germany</option>
+                <option value="US">United States</option>
+                <option value="GB">United Kingdom</option>
+                <option value="AE">UAE</option>
+                <option value="CN">China</option>
+                <option value="JP">Japan</option>
+                <option value="SG">Singapore</option>
+              </select>
+            </div>
+            <div class="route-arrow">→</div>
+            <div class="field-group">
+              <label>Destination Country</label>
+              <select id="deal-dest">
+                <option value="">Select destination</option>
+                <option value="IN">India</option>
+                <option value="DE">Germany</option>
+                <option value="US">United States</option>
+                <option value="GB">United Kingdom</option>
+                <option value="AE">UAE</option>
+                <option value="CN">China</option>
+                <option value="JP">Japan</option>
+                <option value="SG">Singapore</option>
+              </select>
+            </div>
+          </div>
+          <div class="form-section-label">Quantity & Pricing</div>
+          <div class="field-row">
+            <div class="field-group">
+              <label>Quantity</label>
+              <input type="number" id="deal-qty" placeholder="1000" min="0" />
+            </div>
+            <div class="field-group">
+              <label>Unit</label>
+              <select id="deal-unit">
+                <option value="MT">Metric Tonnes (MT)</option>
+                <option value="KG">Kilograms (KG)</option>
+                <option value="LB">Pounds (LB)</option>
+                <option value="PCS">Pieces (PCS)</option>
+                <option value="CTN">Cartons (CTN)</option>
+              </select>
+            </div>
+            <div class="field-group">
+              <label>Base Price (USD)</label>
+              <input type="number" id="deal-price" placeholder="50000" min="0" />
+            </div>
+          </div>
+          <div class="form-section-label">Grade Declaration</div>
+          <div class="grade-slider-wrap">
+            <label>Declared Grade: <span id="grade-display" class="grade-val">75</span> / 100</label>
+            <input type="range" id="deal-grade" min="0" max="100" value="75" 
+                   oninput="document.getElementById('grade-display').textContent = this.value" />
+            <div class="grade-labels">
+              <span>Low (0)</span>
+              <span>Standard (50)</span>
+              <span>Premium (100)</span>
+            </div>
+          </div>
+          <div id="deal-error" class="form-error hidden"></div>
+          <div id="deal-pricing-preview" class="pricing-preview hidden">
+            <div class="pricing-row"><span>Base Price</span><span id="prev-base">—</span></div>
+            <div class="pricing-row"><span>Grade Factor</span><span id="prev-grade">—</span></div>
+            <div class="pricing-row"><span>Trust Factor</span><span id="prev-trust">—</span></div>
+            <div class="pricing-row"><span>Risk Discount</span><span id="prev-risk">—</span></div>
+            <div class="pricing-row total"><span>Final Trade Price</span><span id="prev-final">—</span></div>
+          </div>
+          <div class="btn-row">
+            <button class="btn-secondary" onclick="previewDealPricing()">Preview Pricing</button>
+            <button class="btn-primary" onclick="createDeal()">Create Deal</button>
+          </div>
+        </div>
+      </section>
+
+      <!-- ── MY DEALS ── -->
+      <section id="page-my-deals" class="page">
+        <div class="page-header">
+          <h2 class="page-title">My Deals</h2>
+          <p class="page-desc">All your active and historical trade deals</p>
+        </div>
+        <div id="my-deals-list" class="deal-list"></div>
+      </section>
+
+      <!-- ── TRUST SCORE ── -->
+      <section id="page-trust-score" class="page">
+        <div class="page-header">
+          <h2 class="page-title">Trust Score</h2>
+          <p class="page-desc">Your Seller Credit Score — the backbone of your trade reputation</p>
+        </div>
+        <div class="trust-layout">
+          <div class="trust-gauge-card">
+            <div class="gauge-wrap">
+              <svg class="gauge-svg" viewBox="0 0 200 120">
+                <path class="gauge-bg" d="M 20 110 A 80 80 0 0 1 180 110" fill="none" stroke-width="14"/>
+                <path class="gauge-fill" id="gauge-arc" d="M 20 110 A 80 80 0 0 1 180 110" fill="none" stroke-width="14" stroke-dasharray="251.2" stroke-dashoffset="251.2"/>
+                <text x="100" y="95" class="gauge-number" id="gauge-number">—</text>
+                <text x="100" y="112" class="gauge-tier" id="gauge-tier">Loading...</text>
+              </svg>
+            </div>
+            <div class="gauge-legend">
+              <span class="tier-badge low">Low &lt;55</span>
+              <span class="tier-badge medium">Medium 55–80</span>
+              <span class="tier-badge high">High &gt;80</span>
+            </div>
+          </div>
+          <div class="trust-breakdown-card">
+            <h3>Score Breakdown</h3>
+            <p class="trust-formula-note">Score = 0.35×TSR + 0.20×GAS + 0.15×DRI + 0.15×DT + 0.15×BFS</p>
+            <div class="metric-bar" id="bar-tsr">
+              <div class="metric-label">Transaction Success Rate <span class="metric-weight">(×0.35)</span></div>
+              <div class="bar-track"><div class="bar-fill" style="width:80%"></div></div>
+              <div class="metric-score">0.80</div>
+            </div>
+            <div class="metric-bar" id="bar-gas">
+              <div class="metric-label">Grade Accuracy Score <span class="metric-weight">(×0.20)</span></div>
+              <div class="bar-track"><div class="bar-fill" style="width:75%"></div></div>
+              <div class="metric-score">0.75</div>
+            </div>
+            <div class="metric-bar" id="bar-dri">
+              <div class="metric-label">Dispute Ratio Inverse <span class="metric-weight">(×0.15)</span></div>
+              <div class="bar-track"><div class="bar-fill" style="width:90%"></div></div>
+              <div class="metric-score">0.90</div>
+            </div>
+            <div class="metric-bar" id="bar-dt">
+              <div class="metric-label">Delivery Timeliness <span class="metric-weight">(×0.15)</span></div>
+              <div class="bar-track"><div class="bar-fill" style="width:80%"></div></div>
+              <div class="metric-score">0.80</div>
+            </div>
+            <div class="metric-bar" id="bar-bfs">
+              <div class="metric-label">Buyer Feedback Score <span class="metric-weight">(×0.15)</span></div>
+              <div class="bar-track"><div class="bar-fill" style="width:75%"></div></div>
+              <div class="metric-score">0.75</div>
+            </div>
+            <div class="verification-rule">
+              <div class="vr-title">Verification Protocol</div>
+              <div class="vr-table">
+                <div class="vr-row"><span class="vr-tier high-t">High Score (&gt;80)</span><span>No verification required</span></div>
+                <div class="vr-row"><span class="vr-tier med-t">Medium (55–80)</span><span>Random sampling</span></div>
+                <div class="vr-row"><span class="vr-tier low-t">Low (&lt;55)</span><span>Mandatory grade test</span></div>
+              </div>
+            </div>
+          </div>
+        </div>
+      </section>
+
+      <!-- ── TAX CALCULATOR ── -->
+      <section id="page-tax-calc" class="page">
+        <div class="page-header">
+          <h2 class="page-title">Tax & Tariff Calculator</h2>
+          <p class="page-desc">Estimate customs duty, VAT, and landed cost for any trade route</p>
+        </div>
+        <div class="form-card">
+          <div class="field-row">
+            <div class="field-group">
+              <label>Origin Country</label>
+              <select id="tax-origin">
+                <option value="IN">India</option>
+                <option value="DE">Germany</option>
+                <option value="US">United States</option>
+                <option value="GB">United Kingdom</option>
+                <option value="AE">UAE</option>
+                <option value="CN">China</option>
+              </select>
+            </div>
+            <div class="field-group">
+              <label>Destination Country</label>
+              <select id="tax-dest">
+                <option value="DE">Germany</option>
+                <option value="IN">India</option>
+                <option value="US">United States</option>
+                <option value="GB">United Kingdom</option>
+                <option value="AE">UAE</option>
+                <option value="CN">China</option>
+              </select>
+            </div>
+          </div>
+          <div class="field-row">
+            <div class="field-group">
+              <label>Trade Value (USD)</label>
+              <input type="number" id="tax-value" placeholder="100000" />
+            </div>
+            <div class="field-group">
+              <label>HS Code <span class="optional">(optional)</span></label>
+              <input type="text" id="tax-hs" placeholder="1006.30" />
+            </div>
+          </div>
+          <button class="btn-primary" onclick="calculateTax()">Calculate</button>
+          <div id="tax-result" class="tax-result hidden"></div>
+          <p class="disclaimer-text">⚠ These are indicative estimates only. Consult a licensed customs broker for binding tariff classification. Brace is not liable for tax decisions made on the basis of these estimates.</p>
+        </div>
+      </section>
+
+      <!-- ── FX RATES ── -->
+      <section id="page-fx-rates" class="page">
+        <div class="page-header">
+          <h2 class="page-title">FX Rates</h2>
+          <p class="page-desc">Live exchange rates via Open ER-API (free tier)</p>
+        </div>
+        <div class="fx-wrap">
+          <div class="fx-selector">
+            <label>Base Currency</label>
+            <select id="fx-base" onchange="loadFX()">
+              <option value="USD">USD — US Dollar</option>
+              <option value="EUR">EUR — Euro</option>
+              <option value="GBP">GBP — Pound Sterling</option>
+              <option value="INR">INR — Indian Rupee</option>
+              <option value="AED">AED — UAE Dirham</option>
+            </select>
+          </div>
+          <div id="fx-grid" class="fx-grid">Loading rates...</div>
+        </div>
+      </section>
+
+      <!-- ── AI MARKETS ── -->
+      <section id="page-markets" class="page">
+        <div class="page-header">
+          <h2 class="page-title">AI Market Intelligence</h2>
+          <p class="page-desc">Powered by Hugging Face free inference API + rule-based market data</p>
+        </div>
+        <div class="form-card">
+          <div class="field-row">
+            <div class="field-group">
+              <label>Product Name</label>
+              <input type="text" id="mkt-product" placeholder="e.g. Basmati Rice" />
+            </div>
+            <div class="field-group">
+              <label>Your Country</label>
+              <select id="mkt-origin">
+                <option value="IN">India</option>
+                <option value="DE">Germany</option>
+                <option value="US">United States</option>
+                <option value="GB">United Kingdom</option>
+              </select>
+            </div>
+          </div>
+          <div class="field-group">
+            <label>Product Description <span class="optional">(for AI sentiment)</span></label>
+            <textarea id="mkt-desc" rows="3" placeholder="Describe your product quality, variety, certifications..."></textarea>
+          </div>
+          <button class="btn-primary" onclick="getMarketIntel()">Analyse Markets</button>
+          <div id="mkt-result" class="mkt-result hidden"></div>
+          <div class="ml-models-card">
+            <div class="ml-title">🤖 ML Models Used in Brace</div>
+            <div class="ml-row"><strong>Sentiment Analysis:</strong> <code>distilbert-base-uncased-finetuned-sst-2-english</code></div>
+            <div class="ml-row"><strong>Text Generation:</strong> <code>mistralai/Mistral-7B-Instruct-v0.2</code></div>
+            <div class="ml-row"><strong>Financial Risk:</strong> <code>ProsusAI/finbert</code></div>
+            <div class="ml-row"><strong>Grade Engine:</strong> <code>Custom Normalized Global Grade Score</code></div>
+            <p style="font-size:0.75rem;opacity:0.7;margin-top:0.5rem">All models are free via Hugging Face Inference API. Plug in your HF_API_KEY in .env to activate AI features.</p>
+          </div>
+        </div>
+      </section>
+
+      <!-- ── DISPUTES ── -->
+      <section id="page-disputes" class="page">
+        <div class="page-header">
+          <h2 class="page-title">Disputes</h2>
+          <p class="page-desc">Raise and track trade disputes via Brace's mediation layer</p>
+        </div>
+        <div class="form-card" style="margin-bottom:2rem">
+          <div class="form-section-label">Raise a New Dispute</div>
+          <div class="field-group">
+            <label>Deal ID</label>
+            <input type="text" id="dispute-deal-id" placeholder="Paste deal ID" />
+          </div>
+          <div class="field-group">
+            <label>Reason</label>
+            <textarea id="dispute-reason" rows="3" placeholder="Describe the issue in detail..."></textarea>
+          </div>
+          <button class="btn-primary" onclick="raiseDispute()">Submit Dispute</button>
+        </div>
+        <div class="section-divider"><span>My Disputes</span></div>
+        <div id="disputes-list" class="deal-list"></div>
+      </section>
+
+      <!-- ── AUDIT LOG ── -->
+      <section id="page-audit" class="page">
+        <div class="page-header">
+          <h2 class="page-title">Audit Log</h2>
+          <p class="page-desc">Immutable record of all your account activity</p>
+        </div>
+        <div id="audit-list" class="audit-list"></div>
+      </section>
+
+    </main>
+  </div>
+
+  <!-- ════════════════════════════════════════
+       DEAL DETAIL MODAL
+  ════════════════════════════════════════ -->
+  <div id="deal-modal" class="modal-overlay hidden">
+    <div class="modal-panel">
+      <button class="modal-close" onclick="closeModal()">✕</button>
+      <div id="modal-content"></div>
+    </div>
+  </div>
+
+  <!-- TOAST -->
+  <div id="toast" class="toast hidden"></div>
+
+  <script src="app.js"></script>
+</body>
+</html>
